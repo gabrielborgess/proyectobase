@@ -1,0 +1,4 @@
+nombre base de datos: admin_proyecto
+user:admin_admin
+pass:ganzo10.
+tipo:mysql
