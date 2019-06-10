@@ -7,12 +7,9 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-type Datos struct {
-	Rut      string
-	Apellido string
-}
-
 func main() {
+
+	Interfaz()
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 
 	if err != nil {
@@ -23,25 +20,6 @@ func main() {
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-
-	fmt.Println("Seleccion de tabla:")
-
-	dato, err2 := db.Query("select * from tablaprueba")
-	if err2 != nil {
-		fmt.Println("error prro")
-	}
-
-	for dato.Next() {
-
-		d := Datos{}
-		err3 := dato.Scan(&d.Rut)
-
-		if err3 != nil {
-			fmt.Println("error prro2")
-		}
-		fmt.Println(d.Rut)
-
-	}
 
 	_, err = db.Exec("CREATE TABLE clientes ( id integer, data varchar(32) )")
 	if err != nil {
@@ -86,4 +64,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Println("Tablas Creadas correctamente")
+
 }
