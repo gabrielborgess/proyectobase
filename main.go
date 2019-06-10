@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:22)/admin_proyecto")
+	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 
 	if err != nil {
 		fmt.Printf("error al conectar")
