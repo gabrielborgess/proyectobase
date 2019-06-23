@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	Interfaz()
+	//Interfaz()
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 
 	if err != nil {
