@@ -19,46 +19,47 @@ func main() {
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `clientes`")
 	_, err = db.Exec("CREATE TABLE clientes ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `vendedores`")
 	_, err = db.Exec("CREATE TABLE vendedores ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `pedidos`")
 	_, err = db.Exec("CREATE TABLE pedidos( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `detalle_pedidos`")
 	_, err = db.Exec("CREATE TABLE detalle_pedidos ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `productos`")
 	_, err = db.Exec("CREATE TABLE productos ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `proveedores`")
 	_, err = db.Exec("CREATE TABLE proveedores( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `empleados`")
 	_, err = db.Exec("CREATE TABLE empleados ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
+	_, err = db.Exec("DROP TABLE IF EXISTS `genero`")
 	_, err = db.Exec("CREATE TABLE genero ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-
+	_, err = db.Exec("DROP TABLE IF EXISTS `metodo_pago`")
 	_, err = db.Exec("CREATE TABLE metodo_pago ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
