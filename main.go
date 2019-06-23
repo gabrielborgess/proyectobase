@@ -39,12 +39,12 @@ func main() {
 		panic(err)
 	}
 	execdb("DROP TABLE IF EXISTS `vendedores`")
-	_, err = db.Exec("CREATE TABLE vendedores ( id integer, data varchar(32) )")
+	execdb("CREATE TABLE vendedores ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `pedidos`")
-	_, err = db.Exec("CREATE TABLE pedidos( id integer, data varchar(32) )")
+	execdb("DROP TABLE IF EXISTS `pedidos`")
+	execdb("CREATE TABLE pedidos( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
 	}
