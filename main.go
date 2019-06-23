@@ -7,6 +7,20 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+func execdb(a string) {
+	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
+	if err != nil {
+		fmt.Printf("error al conectar")
+		return
+	}
+	defer db.Close()
+	_, err = db.Exec(a)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Query ejecutada correctamente")
+}
+
 func main() {
 
 	//Interfaz()
@@ -19,7 +33,7 @@ func main() {
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-	_, err = db.Exec("DROP TABLE IF EXISTS `clientes`")
+	execdb("DROP TABLE IF EXISTS `clientes`")
 	_, err = db.Exec("CREATE TABLE clientes ( id integer, data varchar(32) )")
 	if err != nil {
 		panic(err)
