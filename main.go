@@ -23,7 +23,7 @@ func execdb(a string) {
 
 func main() { // Esta muy feo, apenas aprenda a iterar listas aqui lo arreglo
 
-	fmt.Println("Base de datos conectada exitosamente")
+	fmt.Println("Conexion exitosa")
 	execdb("DROP TABLE IF EXISTS `clientes`")
 	execdb("CREATE TABLE clientes ( id integer, data varchar(32) )")
 	execdb("DROP TABLE IF EXISTS `vendedores`")
