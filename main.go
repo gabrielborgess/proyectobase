@@ -34,7 +34,11 @@ func main() {
 
 	defer db.Close()
 	execdb("DROP TABLE IF EXISTS `clientes`")
+<<<<<<< HEAD
 	execdb("CREATE TABLE clientes ( id integer, data varchar(32) )")
+=======
+	_, err = db.Exec("CREATE TABLE clientes ( id integer, data varchar(32) )")
+>>>>>>> 8c05a1217e66ab83ce43fe55802793309b53071d
 	if err != nil {
 		panic(err)
 	}
