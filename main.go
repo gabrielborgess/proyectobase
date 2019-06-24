@@ -25,7 +25,7 @@ func main() { // Esta muy feo, apenas aprenda a iterar listas aqui lo arreglo
 
 	fmt.Println("Conexion exitosa")
 	execdb("DROP TABLE IF EXISTS `clientes`")
-	execdb("CREATE TABLE clientes ( id integer, data varchar(255) )")
+	execdb("CREATE TABLE clientes ( id integer, data varchar(250) )")
 	execdb("DROP TABLE IF EXISTS `vendedores`")
 	execdb("CREATE TABLE vendedores ( id integer, data varchar(255) )")
 	execdb("DROP TABLE IF EXISTS `pedidos`")
