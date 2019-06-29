@@ -16,12 +16,26 @@ func main() {
 	}
 }
 
+func Añadirjuego()string{
+	var(
+		nombre="Aca va el nombre de juego"
+		genero="Aca va el genero del juego"
+		//No se que mas poner xd
+	)
+	fmt.Print("Ingrse nombre del juego:")
+	fmt.Scanf("%s",&nombre)
+	fmt.Println("Ingrse genero del juego:")
+	fmt.Scanf("%s",&genero)
+	return fmt.Sprint(nombre, genero)
+}
+
 func Consulta()string{//Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
 	var atributo string
 	atributo="Aqui va lo que la persona quiere buscar en sql"
 	fmt.Print("Ingrese lo que desea buscar:")
 	fmt.Scanf("%s",&atributo)
 	return atributo
+
 
 
 }
@@ -48,6 +62,11 @@ func menusito() {
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &opcion)
 
+		if opcion=="1"{
+			ajuego:=Añadirjuego()
+			fmt.Println("Añade un juego prro:",ajuego)//Esta linea la puse para probar la funcion despues se elimina
+			fmt.Println(ajuego)//Impresion de los datos, es una prueba BORRAR
+		}
 		if opcion=="4"{
 			juego:=Consulta()
 			fmt.Println("El juego que quiere buscar es:",juego)//Esta linea la puse para probar la funcion despues se elimina
