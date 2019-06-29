@@ -1,11 +1,13 @@
 package main
-
+//importamos el os
 import (
 	"fmt"
 	"os"
 )
 
 //Saludos a github xd
+
+//funcion para iniciar programa
 func main() {
 	fmt.Println("Presiona 1 para correr el programa")
 	fmt.Println("Presiona 2 para salir")
@@ -14,6 +16,16 @@ func main() {
 	}
 }
 
+func Consulta()string{//Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
+	var atributo string
+	atributo="Aqui va lo que la persona quiere buscar en sql"
+	fmt.Print("Ingrese lo que desea buscar:")
+	fmt.Scanf("%s",&atributo)
+	return atributo
+
+
+}
+//en menucito corremos lo principal
 func menusito() {
 
 	var input int
@@ -24,7 +36,6 @@ func menusito() {
 	}
 	switch input {
 	case 1:
-		registro:=
 		xd := "<joli>"
 		opcion := "<Selecciona una opcion:>"
 		fmt.Println("Bienvenido al administrador de videojuegos")
@@ -37,14 +48,19 @@ func menusito() {
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &opcion)
 
-		if opcion == "4" {
+		if opcion=="4"{
+			juego:=Consulta()
+			fmt.Println("El juego que quiere buscar es:",juego)//Esta linea la puse para probar la funcion despues se elimina
+		}
+
+		if opcion == "6" {//aqui aparece algunos if
 			fmt.Println("Gracias por usar the master program xd")
 			fmt.Println("chao prro")
 			os.Exit(2)
 		}
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &xd)
-	case 2:
+	case 2://en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
 		fmt.Println("Gracias por usar the master program xd")
 		fmt.Println("chao prro")
 		os.Exit(2)

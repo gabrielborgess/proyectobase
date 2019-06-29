@@ -28,22 +28,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.go">
+        <entry file="file://$PROJECT_DIR$/interfaz.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="87" column="1" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
+            <state relative-caret-position="270">
+              <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+              <folding>
+                <element signature="e#14#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/interfaz.go">
+        <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
-              <folding>
-                <element signature="e#14#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="9" column="78" selection-start-line="9" selection-start-column="78" selection-end-line="9" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -57,14 +57,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/interfaz.go" />
         <option value="$PROJECT_DIR$/main.go" />
+        <option value="$PROJECT_DIR$/interfaz.go" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="157" />
-    <option name="y" value="-15" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="147" />
+    <option name="y" value="-18" />
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
@@ -107,16 +107,74 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Go Build.go build interfaz.go">
+    <configuration name="go build interfaz.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="ProyectoBasedeDatos" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/interfaz.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go run ProyectoBasedeDatos" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="ProyectoBasedeDatos" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Test.go run ProyectoBasedeDatos" />
+      <item itemvalue="Go Build.go build interfaz.go" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build interfaz.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TestHistory">
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 23m 46s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 24m 59s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 25m 10s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 25m 22s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 25m 34s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 25m 48s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 25m 59s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 26m 02s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="go_run_ProyectoBasedeDatos - 2019.06.28 at 23h 26m 07s.xml">
+      <configuration name="go run ProyectoBasedeDatos" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3045326" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3045326" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.398773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -126,6 +184,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.3295302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -135,21 +194,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ProyectoBasedeDatos$go_run_ProyectoBasedeDatos.out" NAME="go run ProyectoBasedeDatos Coverage Results" MODIFIED="1561778758347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/interfaz.go">
+    <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
-          <folding>
-            <element signature="e#14#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="9" column="78" selection-start-line="9" selection-start-column="78" selection-end-line="9" selection-end-column="78" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
+    <entry file="file://$PROJECT_DIR$/interfaz.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="87" column="1" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
+        <state relative-caret-position="270">
+          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
+          <folding>
+            <element signature="e#14#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -7,7 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-func main() {
+func main() {//funcion principal donde llamamos la funcion de crear tablas etc
 	creartablas()
 }
 
@@ -25,7 +25,7 @@ func execdb(a string) {
 	fmt.Println("Query ejecutada correctamente")
 }
 
-func creartablas() {
+func creartablas() {//una funcion aparte encargada solo de crear tablas
 
 	//Interfaz()
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
