@@ -1,88 +1,101 @@
 package main
 
+//importamos el os
 import (
-	"database/sql"
+	_ "./base"
 	"fmt"
-
-	_ "github.com/go-sql-driver/mysql"
+	"os"
 )
 
-func main() {//funcion principal donde llamamos la funcion de crear tablas etc
-	creartablas()
+//Saludos a github xd
+
+//funcion para iniciar programa
+func main() {
+	
+	fmt.Println("Presiona 1 para correr el programa")
+	fmt.Println("Presiona 2 para salir")
+	for {
+		menusito()
+	}
 }
 
-func execdb(a string) {
-	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
-	if err != nil {
-		fmt.Printf("error al conectar")
-		return
-	}
-	defer db.Close()
-	_, err = db.Exec(a)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Query ejecutada correctamente")
+func Añadirjuego()string{
+	var(
+		nombre="Aca va el nombre de juego"
+		genero="Aca va el genero del juego"
+		//No se que mas poner xd
+	)
+	fmt.Print("Ingrse nombre del juego:")
+	fmt.Scanf("%s",&nombre)
+	fmt.Println("Ingrse genero del juego:")
+	fmt.Scanf("%s",&genero)
+	return fmt.Sprint(nombre, genero)
 }
 
-func creartablas() {//una funcion aparte encargada solo de crear tablas
+func Consulta()string{//Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
+	var atributo string
+	atributo="Aqui va lo que la persona quiere buscar en sql"
+	fmt.Print("Ingrese lo que desea buscar:")
+	fmt.Scanf("%s",&atributo)
+	return atributo
 
-	//Interfaz()
-	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
-	if err != nil {
-		fmt.Printf("error al conectar")
+
+
+}
+
+//Print string and size (Ignoren e sta funcion xd)
+func printStrAndSize(s string) {
+	fmt.Printf("%s \t %d\n", s, len(s))
+}
+
+
+//en menucito corremos lo principal
+func menusito() {
+
+	var input int
+	n, err := fmt.Scanln(&input)
+	if n < 1 || err != nil {
+		fmt.Println("Tecla invalida prro")
 		return
 	}
+	switch input {
+	case 1:
+		xd := "<joli>"
+		opcion := "<Selecciona una opcion:>"
+		fmt.Println("Bienvenido al administrador de videojuegos")
+		fmt.Println("Que deseas hacer?.\n")
+		fmt.Println("1.Añadir un videojuego")
+		fmt.Println("3.Editar videojuego")
+		fmt.Println("4.Buscar videojuego")
+		fmt.Println("5.Añadir venta")
+		fmt.Println("6.Salir\n")
+		fmt.Print("Selecciona una opcion:")
+		fmt.Scanf("%s", &opcion)
 
-	fmt.Println("Base de datos conectada exitosamente")
+		if opcion=="1"{
+			ajuego:=Añadirjuego()
+			fmt.Println("Añade un juego prro:",ajuego)//Esta linea la puse para probar la funcion despues se elimina
+			fmt.Println(ajuego)//Impresion de los datos, es una prueba BORRAR
+		}
+		if opcion=="4"{
+			juego:=Consulta()
+			fmt.Println("El juego que quiere buscar es:",juego)//Esta linea la puse para probar la funcion despues se elimina
+		}
 
-	defer db.Close()
-	execdb("DROP TABLE IF EXISTS `clientes`")
-	execdb("CREATE TABLE clientes ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
+		if opcion == "6" {//aqui aparece algunos if
+			fmt.Println("Gracias por usar the master program xd")
+			fmt.Println("chao prro")
+			os.Exit(2)
+		}
+		fmt.Print("Selecciona una opcion:")
+		fmt.Scanf("%s", &xd)
+	case 2://en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
+		fmt.Println("Gracias por NO usar the master program xd")
+		fmt.Println("chao prro")
+		printStrAndSize("😊 💩")
+		os.Exit(2)
+	default:
+		fmt.Println("def")
 	}
-	execdb("DROP TABLE IF EXISTS `vendedores`")
-	execdb("CREATE TABLE vendedores ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	execdb("DROP TABLE IF EXISTS `pedidos`")
-	execdb("CREATE TABLE pedidos( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	execdb("DROP TABLE IF EXISTS `detalle_pedidos`")
-	_, err = db.Exec("CREATE TABLE detalle_pedidos ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `productos`")
-	_, err = db.Exec("CREATE TABLE productos ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `proveedores`")
-	_, err = db.Exec("CREATE TABLE proveedores( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `empleados`")
-	_, err = db.Exec("CREATE TABLE empleados ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `genero`")
-	_, err = db.Exec("CREATE TABLE genero ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `metodo_pago`")
-	_, err = db.Exec("CREATE TABLE metodo_pago ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Tablas Creadas correctamente")
 
 }
