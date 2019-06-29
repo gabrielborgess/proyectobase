@@ -7,6 +7,10 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+func main() {
+	creartablas()
+}
+
 func execdb(a string) {
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 	if err != nil {
@@ -21,7 +25,7 @@ func execdb(a string) {
 	fmt.Println("Query ejecutada correctamente")
 }
 
-func main() {
+func creartablas() {
 
 	//Interfaz()
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")

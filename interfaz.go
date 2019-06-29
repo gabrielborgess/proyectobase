@@ -24,14 +24,16 @@ func menusito() {
 	}
 	switch input {
 	case 1:
+		registro:=
 		xd := "<joli>"
 		opcion := "<Selecciona una opcion:>"
 		fmt.Println("Bienvenido al administrador de videojuegos")
 		fmt.Println("Que deseas hacer?.\n")
 		fmt.Println("1.Añadir un videojuego")
-		fmt.Println("2.Editar videojuego")
-		fmt.Println("3.Buscar videojuego")
-		fmt.Println("4.Salir\n")
+		fmt.Println("3.Editar videojuego")
+		fmt.Println("4.Buscar videojuego")
+		fmt.Println("5.Añadir venta")
+		fmt.Println("6.Salir\n")
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &opcion)
 
