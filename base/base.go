@@ -3,12 +3,13 @@ package base
 import (
 	"database/sql"
 	"fmt"
-
 	_ "github.com/go-sql-driver/mysql"
+	"time"
 )
 
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
-	creartablas()
+	go creartablas() // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
+	time.Sleep(4 * time.Second)
 }
 
 func Droptable(nombre string) {
@@ -29,7 +30,7 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Query ejecutada correctamente")
+	//fmt.Println("Query ejecutada correctamente") la comento por que el output es infumable
 }
 
 func creartablas() { //una funcion aparte encargada solo de crear tablas
@@ -43,25 +44,26 @@ func creartablas() { //una funcion aparte encargada solo de crear tablas
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-	Droptable("clientes")
-	Droptable("vendedores")
-	Droptable("pedidos")
-	Droptable("detalle_pedidos")
-	Droptable("productos")
-	Droptable("proveedores")
-	Droptable("empleados")
-	Droptable("genero")
-	Droptable("metodo_pago")
-	Createtable("clientes", "id integer, data varchar(32)")
-	Createtable("vendedores", "id integer, data varchar(32)")
-	Createtable("pedidos", "id integer, data varchar(32)")
-	Createtable("detalle_pedidos", "id integer, data varchar(32)")
-	Createtable("productos", "id integer, data varchar(32)")
-	Createtable("proveedores", "id integer, data varchar(32)")
-	Createtable("empleados", "id integer, data varchar(32)")
-	Createtable("genero", "id integer, data varchar(32)")
-	Createtable("metodo_pago", "id integer, data varchar(32)")
-
+	go Droptable("clientes")
+	go Droptable("vendedores")
+	go Droptable("pedidos")
+	go Droptable("detalle_pedidos")
+	go Droptable("productos")
+	go Droptable("proveedores")
+	go Droptable("empleados")
+	go Droptable("genero")
+	go Droptable("metodo_pago")
+	time.Sleep(1 * time.Second)
+	go Createtable("clientes", "id integer, data varchar(32)")
+	go Createtable("vendedores", "id integer, data varchar(32)")
+	go Createtable("pedidos", "id integer, data varchar(32)")
+	go Createtable("detalle_pedidos", "id integer, data varchar(32)")
+	go Createtable("productos", "id integer, data varchar(32)")
+	go Createtable("proveedores", "id integer, data varchar(32)")
+	go Createtable("empleados", "id integer, data varchar(32)")
+	go Createtable("genero", "id integer, data varchar(32)")
+	go Createtable("metodo_pago", "id integer, data varchar(32)")
+	time.Sleep(2 * time.Second)
 	fmt.Println("Tablas Creadas correctamente")
 
 	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
