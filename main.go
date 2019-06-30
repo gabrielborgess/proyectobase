@@ -2,16 +2,18 @@ package main
 
 //importamos el os
 import (
-	_ "./base"
+	"./base"
 	"fmt"
 	"os"
 )
+
 
 //Saludos a github xd
 
 //funcion para iniciar programa
 func main() {
-	
+	base.Base()
+
 	fmt.Println("Presiona 1 para correr el programa")
 	fmt.Println("Presiona 2 para salir")
 	for {
@@ -37,6 +39,7 @@ func Consulta()string{//Funcion que sirve para ingresar en una variable lo que e
 	atributo="Aqui va lo que la persona quiere buscar en sql"
 	fmt.Print("Ingrese lo que desea buscar:")
 	fmt.Scanf("%s",&atributo)
+
 	return atributo
 
 
@@ -48,6 +51,15 @@ func printStrAndSize(s string) {
 	fmt.Printf("%s \t %d\n", s, len(s))
 }
 
+func helpmenu(){
+	fmt.Println("Bienvenido al administrador de videojuegos")
+	fmt.Println("Que deseas hacer?.\n")
+	fmt.Println("1.Añadir un videojuego")
+	fmt.Println("3.Editar videojuego")
+	fmt.Println("4.Buscar videojuego")
+	fmt.Println("5.Añadir venta")
+	fmt.Println("6.Salir\n")
+}
 
 //en menucito corremos lo principal
 func menusito() {
@@ -62,14 +74,7 @@ func menusito() {
 	case 1:
 		xd := "<joli>"
 		opcion := "<Selecciona una opcion:>"
-		fmt.Println("Bienvenido al administrador de videojuegos")
-		fmt.Println("Que deseas hacer?.\n")
-		fmt.Println("1.Añadir un videojuego")
-		fmt.Println("3.Editar videojuego")
-		fmt.Println("4.Buscar videojuego")
-		fmt.Println("5.Añadir venta")
-		fmt.Println("6.Salir\n")
-		fmt.Print("Selecciona una opcion:")
+		helpmenu()
 		fmt.Scanf("%s", &opcion)
 
 		if opcion=="1"{

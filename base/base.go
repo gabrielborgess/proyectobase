@@ -4,9 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 
+
 	_ "github.com/go-sql-driver/mysql"
 )
-func base() {//function principal donde llamamos la funcion de crear tablas etc
+func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	creartablas()
 }
 
@@ -83,5 +84,9 @@ func creartablas() {//una funcion aparte encargada solo de crear tablas
 	}
 
 	fmt.Println("Tablas Creadas correctamente")
+
+	_, err = db.Query("INSERT INTO proveedores VALUES ('0XD')")
+
+
 
 }
