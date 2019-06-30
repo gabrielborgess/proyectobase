@@ -7,10 +7,10 @@ import (
 	"os"
 )
 
-
 //Saludos a github xd
 
 //funcion para iniciar programa
+// No sé que clase de atrocidad hiciste men xdd
 func main() {
 	base.Base()
 
@@ -21,28 +21,26 @@ func main() {
 	}
 }
 
-func Añadirjuego()string{
-	var(
-		nombre="Aca va el nombre de juego"
-		genero="Aca va el genero del juego"
+func Añadirjuego() string {
+	var (
+		nombre = "Aca va el nombre de juego"
+		genero = "Aca va el genero del juego"
 		//No se que mas poner xd
 	)
 	fmt.Print("Ingrse nombre del juego:")
-	fmt.Scanf("%s",&nombre)
+	fmt.Scanf("%s", &nombre)
 	fmt.Println("Ingrse genero del juego:")
-	fmt.Scanf("%s",&genero)
+	fmt.Scanf("%s", &genero)
 	return fmt.Sprint(nombre, genero)
 }
 
-func Consulta()string{//Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
+func Consulta() string { //Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
 	var atributo string
-	atributo="Aqui va lo que la persona quiere buscar en sql"
+	atributo = "Aqui va lo que la persona quiere buscar en sql"
 	fmt.Print("Ingrese lo que desea buscar:")
-	fmt.Scanf("%s",&atributo)
+	fmt.Scanf("%s", &atributo)
 
 	return atributo
-
-
 
 }
 
@@ -51,7 +49,7 @@ func printStrAndSize(s string) {
 	fmt.Printf("%s \t %d\n", s, len(s))
 }
 
-func helpmenu(){
+func helpmenu() {
 	fmt.Println("Bienvenido al administrador de videojuegos")
 	fmt.Println("Que deseas hacer?.\n")
 	fmt.Println("1.Añadir un videojuego")
@@ -77,24 +75,24 @@ func menusito() {
 		helpmenu()
 		fmt.Scanf("%s", &opcion)
 
-		if opcion=="1"{
-			ajuego:=Añadirjuego()
-			fmt.Println("Añade un juego prro:",ajuego)//Esta linea la puse para probar la funcion despues se elimina
-			fmt.Println(ajuego)//Impresion de los datos, es una prueba BORRAR
+		if opcion == "1" {
+			ajuego := Añadirjuego()
+			fmt.Println("Añade un juego prro:", ajuego) //Esta linea la puse para probar la funcion despues se elimina
+			fmt.Println(ajuego)                         //Impresion de los datos, es una prueba BORRAR
 		}
-		if opcion=="4"{
-			juego:=Consulta()
-			fmt.Println("El juego que quiere buscar es:",juego)//Esta linea la puse para probar la funcion despues se elimina
+		if opcion == "4" {
+			juego := Consulta()
+			fmt.Println("El juego que quiere buscar es:", juego) //Esta linea la puse para probar la funcion despues se elimina
 		}
 
-		if opcion == "6" {//aqui aparece algunos if
+		if opcion == "6" { //aqui aparece algunos if
 			fmt.Println("Gracias por usar the master program xd")
 			fmt.Println("chao prro")
 			os.Exit(2)
 		}
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &xd)
-	case 2://en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
+	case 2: //en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
 		fmt.Println("Gracias por NO usar the master program xd")
 		fmt.Println("chao prro")
 		printStrAndSize("😊 💩")

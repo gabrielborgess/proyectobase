@@ -4,11 +4,18 @@ import (
 	"database/sql"
 	"fmt"
 
-
 	_ "github.com/go-sql-driver/mysql"
 )
+
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	creartablas()
+}
+
+func Droptable(a string) {
+	execdb("DROP TABLE IF EXISTS `" + a + "`")
+}
+func Createtable(a string, b string) {
+	execdb("CREATE TABLE " + a + " (" + b + ")")
 }
 
 func execdb(a string) {
@@ -25,8 +32,7 @@ func execdb(a string) {
 	fmt.Println("Query ejecutada correctamente")
 }
 
-func creartablas() {//una funcion aparte encargada solo de crear tablas
-
+func creartablas() { //una funcion aparte encargada solo de crear tablas
 	//Interfaz()
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 	if err != nil {
@@ -37,56 +43,27 @@ func creartablas() {//una funcion aparte encargada solo de crear tablas
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-	execdb("DROP TABLE IF EXISTS `clientes`")
-	execdb("CREATE TABLE clientes ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	execdb("DROP TABLE IF EXISTS `vendedores`")
-	execdb("CREATE TABLE vendedores ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	execdb("DROP TABLE IF EXISTS `pedidos`")
-	execdb("CREATE TABLE pedidos( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	execdb("DROP TABLE IF EXISTS `detalle_pedidos`")
-	_, err = db.Exec("CREATE TABLE detalle_pedidos ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `productos`")
-	_, err = db.Exec("CREATE TABLE productos ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `proveedores`")
-	_, err = db.Exec("CREATE TABLE proveedores( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `empleados`")
-	_, err = db.Exec("CREATE TABLE empleados ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `genero`")
-	_, err = db.Exec("CREATE TABLE genero ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
-	_, err = db.Exec("DROP TABLE IF EXISTS `metodo_pago`")
-	_, err = db.Exec("CREATE TABLE metodo_pago ( id integer, data varchar(32) )")
-	if err != nil {
-		panic(err)
-	}
+	Droptable("clientes")
+	Droptable("vendedores")
+	Droptable("pedidos")
+	Droptable("detalle_pedidos")
+	Droptable("productos")
+	Droptable("proveedores")
+	Droptable("empleados")
+	Droptable("genero")
+	Droptable("metodo_pago")
+	Createtable("clientes", "id integer, data varchar(32)") // Usa la funcion que cree yo para hacer las query, saldrá mejor y mas facil
+	Createtable("vendedores", "id integer, data varchar(32)")
+	Createtable("pedidos", "id integer, data varchar(32)")
+	Createtable("detalle_pedidos", "id integer, data varchar(32)")
+	Createtable("productos", "id integer, data varchar(32)")
+	Createtable("proveedores", "id integer, data varchar(32)")
+	Createtable("empleados", "id integer, data varchar(32)")
+	Createtable("genero", "id integer, data varchar(32)")
+	Createtable("metodo_pago", "id integer, data varchar(32)")
 
 	fmt.Println("Tablas Creadas correctamente")
 
-	_, err = db.Query("INSERT INTO proveedores VALUES ('0XD')")
-
-
+	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
 
 }
