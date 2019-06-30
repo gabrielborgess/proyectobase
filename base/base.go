@@ -11,21 +11,21 @@ func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	creartablas()
 }
 
-func Droptable(a string) {
-	execdb("DROP TABLE IF EXISTS `" + a + "`")
+func Droptable(nombre string) {
+	execdb("DROP TABLE IF EXISTS `" + nombre + "`")
 }
-func Createtable(a string, b string) {
-	execdb("CREATE TABLE " + a + " (" + b + ")")
+func Createtable(nombre string, atributos string) {
+	execdb("CREATE TABLE " + nombre + " (" + atributos + ")")
 }
 
-func execdb(a string) {
+func execdb(query string) {
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 	if err != nil {
 		fmt.Printf("error al conectar")
 		return
 	}
 	defer db.Close()
-	_, err = db.Exec(a)
+	_, err = db.Exec(query)
 	if err != nil {
 		panic(err)
 	}
