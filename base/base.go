@@ -35,6 +35,12 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 
 func creartablas() { //una funcion aparte encargada solo de crear tablas
 	//Interfaz()
+	tablas := [9]string{"clientes", "vendedores", "pedidos", "detalle_pedidos",
+		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
+	atributos := [9]string{"id integer, data varchar(32)", "id integer, data varchar(32)",
+		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
+		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
+		"id integer, data varchar(32)"}
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 	if err != nil {
 		fmt.Printf("error al conectar")
@@ -44,25 +50,13 @@ func creartablas() { //una funcion aparte encargada solo de crear tablas
 	fmt.Println("Base de datos conectada exitosamente")
 
 	defer db.Close()
-	go Droptable("clientes")
-	go Droptable("vendedores")
-	go Droptable("pedidos")
-	go Droptable("detalle_pedidos")
-	go Droptable("productos")
-	go Droptable("proveedores")
-	go Droptable("empleados")
-	go Droptable("genero")
-	go Droptable("metodo_pago")
-	time.Sleep(1 * time.Second)
-	go Createtable("clientes", "id integer, data varchar(32)")
-	go Createtable("vendedores", "id integer, data varchar(32)")
-	go Createtable("pedidos", "id integer, data varchar(32)")
-	go Createtable("detalle_pedidos", "id integer, data varchar(32)")
-	go Createtable("productos", "id integer, data varchar(32)")
-	go Createtable("proveedores", "id integer, data varchar(32)")
-	go Createtable("empleados", "id integer, data varchar(32)")
-	go Createtable("genero", "id integer, data varchar(32)")
-	go Createtable("metodo_pago", "id integer, data varchar(32)")
+	for i := 0; i < len(tablas); i++ {
+		go Droptable(tablas[i])
+	}
+	time.Sleep(2 * time.Second)
+	for i := 0; i < len(tablas); i++ {
+		go Createtable(tablas[i], atributos[i])
+	}
 	time.Sleep(2 * time.Second)
 	fmt.Println("Tablas Creadas correctamente")
 
