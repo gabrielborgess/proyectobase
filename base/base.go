@@ -40,10 +40,13 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 }
 
 func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
-	tablas := [11]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "vendedores", "pedidos", "detalle_pedidos",
+	tablas := [17]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
+		"empleados_rut", "empleados_area", "empleados_direccion", "empleados_cargo", "area", "pedidos", "detalle_pedidos",
 		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
-	atributos := [11]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
-		"id integer, direccion varchar(255), region varchar(150)", "id integer, data varchar(32)",
+	atributos := [17]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
+		"id integer, direccion varchar(255), region varchar(150)", "id integer, nombre varchar(255)",
+		"id integer, sueldo integer", "id integer, rut integer, dv integer", "id integer, area_id integer",
+		"id integer, direccion varchar(255), region varchar(150)", "id integer, cargo varchar(255)", "id integer, tipo varchar(255)",
 		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)"}
