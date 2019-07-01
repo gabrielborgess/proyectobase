@@ -27,7 +27,7 @@ func Añadirjuego() string {
 	)
 	fmt.Print("Ingrse nombre del juego:")
 	fmt.Scanf("%s", &nombre)
-	fmt.Printf("Ingrse genero del juego:")
+	fmt.Printf("Ingrese genero del juego:")
 	fmt.Scanf("%s", &genero)
 	return fmt.Sprint(nombre, genero)
 }
@@ -80,11 +80,13 @@ func menusito() {
 	case "6":
 		fmt.Print("elegiste la opcion 6")
 	case "7":
-		fmt.Println("Gracias por usar the master program xd")
-		fmt.Println("chao prro")
+		fmt.Println("Gracias por usar el programa")
+		fmt.Println("Hasta pronto")
 		os.Exit(2)
 
 	default:
-		fmt.Println("no")
+		fmt.Println("La opcion que elegiste es incorrecta")
+		fmt.Println(" ")
+		fmt.Println(" ")
 	}
 }
