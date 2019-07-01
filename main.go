@@ -14,8 +14,6 @@ import (
 func main() {
 	base.Base()
 
-	fmt.Println("Presiona 1 para correr el programa")
-	fmt.Println("Presiona 2 para salir")
 	for {
 		menusito()
 	}
@@ -29,7 +27,7 @@ func Añadirjuego() string {
 	)
 	fmt.Print("Ingrse nombre del juego:")
 	fmt.Scanf("%s", &nombre)
-	fmt.Println("Ingrse genero del juego:")
+	fmt.Printf("Ingrse genero del juego:")
 	fmt.Scanf("%s", &genero)
 	return fmt.Sprint(nombre, genero)
 }
@@ -44,59 +42,49 @@ func Consulta() string { //Funcion que sirve para ingresar en una variable lo qu
 
 }
 
-//Print string and size (Ignoren e sta funcion xd)
-func printStrAndSize(s string) {
-	fmt.Printf("%s \t %d\n", s, len(s))
-}
-
 func helpmenu() {
 	fmt.Println("Bienvenido al administrador de videojuegos")
 	fmt.Println("Que deseas hacer?.\n")
 	fmt.Println("1.Añadir un videojuego")
-	fmt.Println("3.Editar videojuego")
-	fmt.Println("4.Buscar videojuego")
-	fmt.Println("5.Añadir venta")
-	fmt.Println("6.Salir\n")
+	fmt.Println("2.Editar videojuego")
+	fmt.Println("3.Buscar videojuego")
+	fmt.Println("4.Añadir venta")
+	fmt.Println("5.Buscar venta")
+	fmt.Println("6.Editar venta")
+	fmt.Println("7.Salir\n")
+	fmt.Printf(":")
 }
 
 //en menucito corremos lo principal
 func menusito() {
 
-	var input int
-	n, err := fmt.Scanln(&input)
-	if n < 1 || err != nil {
-		fmt.Println("Tecla invalida prro")
-		return
-	}
-	switch input {
-	case 1:
-		xd := "<joli>"
-		opcion := "<Selecciona una opcion:>"
-		helpmenu()
-		fmt.Scanf("%s", &opcion)
-		switch opcion {
-		case "1":
-			ajuego := Añadirjuego()
-			fmt.Println("Añade un juego prro:", ajuego) //Esta linea la puse para probar la funcion despues se elimina
-			fmt.Println(ajuego)
-		case "4":
-			juego := Consulta()
-			fmt.Println("El juego que quiere buscar es:", juego) //Esta linea la puse para probar la funcion despues se elimina
-		case "6":
-			fmt.Println("Gracias por usar the master program xd")
-			fmt.Println("chao prro")
-			os.Exit(2)
-		}
+	opcion := "<Selecciona una opcion:>"
+	helpmenu()
+	fmt.Scanf("%s", &opcion)
+	switch opcion {
+	case "1":
+		ajuego := Añadirjuego()
+		fmt.Printf("Añade un juego prro:", ajuego) //Esta linea la puse para probar la funcion despues se elimina
+		fmt.Println(ajuego)
 
-		fmt.Print("Selecciona una opcion:")
-		fmt.Scanf("%s", &xd)
-	case 2: //en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
-		fmt.Println("Gracias por NO usar the master program xd")
+	case "2":
+		fmt.Println("elegista la Opcion 2")
+
+	case "3":
+		juego := Consulta()
+		fmt.Println("El juego que quiere buscar es:", juego) //Esta linea la puse para probar la funcion despues se elimina
+	case "4":
+		fmt.Print("elegiste la opcion 4")
+	case "5":
+		fmt.Print("elegiste la opcion 5")
+	case "6":
+		fmt.Print("elegiste la opcion 6")
+	case "7":
+		fmt.Println("Gracias por usar the master program xd")
 		fmt.Println("chao prro")
-		printStrAndSize("😊 💩")
 		os.Exit(2)
-	default:
-		fmt.Println("def")
-	}
 
+	default:
+		fmt.Println("no")
+	}
 }

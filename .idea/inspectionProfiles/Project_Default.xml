@@ -24,5 +24,6 @@
         <method importPath="database/sql" receiver="*DB" name="Close" />
       </methods>
     </inspection_tool>
+    <inspection_tool class="GoUnresolvedReference" enabled="false" level="ERROR" enabled_by_default="false" />
   </profile>
 </component>
