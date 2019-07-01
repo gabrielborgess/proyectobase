@@ -10,7 +10,7 @@ import (
 )
 
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
-	count := 24
+	count := 42
 	bar := pb.StartNew(count)
 	bar.ShowCounters = false
 	bar.ShowElapsedTime = true
@@ -40,14 +40,16 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 }
 
 func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
-	tablas := [17]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
-		"empleados_rut", "empleados_area", "empleados_direccion", "empleados_cargo", "area", "pedidos", "detalle_pedidos",
+	tablas := [20]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
+		"empleados_rut", "empleados_area", "empleados_direccion", "empleados_cargo", "area", "pedidos_direccion",
+		"pedidos_empleado", "pedidos_cliente", "pedidos_detalle", "detalle_pedidos",
 		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
-	atributos := [17]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
+	atributos := [20]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
 		"id integer, direccion varchar(255), region varchar(150)", "id integer, nombre varchar(255)",
 		"id integer, sueldo integer", "id integer, rut integer, dv integer", "id integer, area_id integer",
 		"id integer, direccion varchar(255), region varchar(150)", "id integer, cargo varchar(255)", "id integer, tipo varchar(255)",
-		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
+		"id integer, direccion varchar(255)", "id integer, empleado_id integer", "id integer, cliente_id integer",
+		"id integer, valor integer, detalle_id integer", "id integer, producto_id integer, cantidad integer", "id integer, data varchar(32)",
 		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)"}
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
