@@ -4,12 +4,23 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"gopkg.in/cheggaaa/pb.v1"
+	_ "gopkg.in/cheggaaa/pb.v1"
 	"time"
 )
 
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	go creartablas() // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
+	go Barra()
 	time.Sleep(4 * time.Second)
+
+}
+
+func Barra() {
+	count := 10
+	bar := pb.StartNew(count)
+	bar.Increment()
+	bar.FinishPrint("The End!")
 }
 
 func Droptable(nombre string) {

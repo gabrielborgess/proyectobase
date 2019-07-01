@@ -74,22 +74,20 @@ func menusito() {
 		opcion := "<Selecciona una opcion:>"
 		helpmenu()
 		fmt.Scanf("%s", &opcion)
-
-		if opcion == "1" {
+		switch opcion {
+		case "1":
 			ajuego := Añadirjuego()
 			fmt.Println("Añade un juego prro:", ajuego) //Esta linea la puse para probar la funcion despues se elimina
-			fmt.Println(ajuego)                         //Impresion de los datos, es una prueba BORRAR
-		}
-		if opcion == "4" {
+			fmt.Println(ajuego)
+		case "4":
 			juego := Consulta()
 			fmt.Println("El juego que quiere buscar es:", juego) //Esta linea la puse para probar la funcion despues se elimina
-		}
-
-		if opcion == "6" { //aqui aparece algunos if
+		case "6":
 			fmt.Println("Gracias por usar the master program xd")
 			fmt.Println("chao prro")
 			os.Exit(2)
 		}
+
 		fmt.Print("Selecciona una opcion:")
 		fmt.Scanf("%s", &xd)
 	case 2: //en el menu principial 1 si presionamos el 2 (case 2) cerramos el programa y lanzamos un mensaje
