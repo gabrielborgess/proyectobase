@@ -85,6 +85,6 @@ func menusito() {
 		os.Exit(2)
 
 	default:
-		fmt.Println("no")
+		fmt.Println("Opcion Invalida")
 	}
 }
