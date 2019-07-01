@@ -12,7 +12,9 @@ import (
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	count := 20
 	bar := pb.StartNew(count)
+	bar.ShowCounters = false
 	bar.ShowElapsedTime = true
+	bar.ShowFinalTime = false
 	go creartablas(bar) // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
 	time.Sleep(4 * time.Second)
 }
