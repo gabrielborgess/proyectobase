@@ -10,17 +10,11 @@ import (
 )
 
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
-	go creartablas() // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
-	go Barra()
-	time.Sleep(4 * time.Second)
-
-}
-
-func Barra() {
-	count := 10
+	count := 20
 	bar := pb.StartNew(count)
-	bar.Increment()
-	bar.FinishPrint("The End!")
+	bar.ShowElapsedTime = true
+	go creartablas(bar) // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
+	time.Sleep(4 * time.Second)
 }
 
 func Droptable(nombre string) {
@@ -41,11 +35,9 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 	if err != nil {
 		panic(err)
 	}
-	//fmt.Println("Query ejecutada correctamente") la comento por que el output es infumable
 }
 
-func creartablas() { //una funcion aparte encargada solo de crear tablas
-	porcentaje := 0
+func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
 	tablas := [9]string{"clientes", "vendedores", "pedidos", "detalle_pedidos",
 		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
 	atributos := [9]string{"id integer, data varchar(32)", "id integer, data varchar(32)",
@@ -57,23 +49,19 @@ func creartablas() { //una funcion aparte encargada solo de crear tablas
 		fmt.Printf("error al conectar")
 		return
 	}
-
-	fmt.Println(porcentaje, "%")
-
+	a.Increment()
 	defer db.Close()
 	for i := 0; i < len(tablas); i++ {
 		go Droptable(tablas[i])
-		porcentaje += 5
-		fmt.Println(porcentaje, "%")
+		a.Increment()
 	}
 	time.Sleep(2 * time.Second)
 	for i := 0; i < len(tablas); i++ {
 		go Createtable(tablas[i], atributos[i])
-		porcentaje += 5
-		fmt.Println(porcentaje, "%")
+		a.Increment()
 	}
-	porcentaje += 10
-	fmt.Println(porcentaje, "%")
+	a.Increment()
+	a.FinishPrint("Programa Cargado\n")
 	time.Sleep(2 * time.Second)
 
 	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
