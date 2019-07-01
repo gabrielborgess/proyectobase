@@ -10,7 +10,7 @@ import (
 )
 
 func Base() { //function principal donde llamamos la funcion de crear tablas etc
-	count := 20
+	count := 24
 	bar := pb.StartNew(count)
 	bar.ShowCounters = false
 	bar.ShowElapsedTime = true
@@ -40,9 +40,10 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 }
 
 func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
-	tablas := [9]string{"clientes", "vendedores", "pedidos", "detalle_pedidos",
+	tablas := [11]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "vendedores", "pedidos", "detalle_pedidos",
 		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
-	atributos := [9]string{"id integer, data varchar(32)", "id integer, data varchar(32)",
+	atributos := [11]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
+		"id integer, direccion varchar(255), region varchar(150)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)", "id integer, data varchar(32)", "id integer, data varchar(32)",
 		"id integer, data varchar(32)"}
