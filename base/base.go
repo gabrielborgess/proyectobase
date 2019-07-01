@@ -34,7 +34,7 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 }
 
 func creartablas() { //una funcion aparte encargada solo de crear tablas
-	//Interfaz()
+	porcentaje := 0
 	tablas := [9]string{"clientes", "vendedores", "pedidos", "detalle_pedidos",
 		"productos", "proveedores", "empleados", "genero", "metodo_pago"}
 	atributos := [9]string{"id integer, data varchar(32)", "id integer, data varchar(32)",
@@ -47,18 +47,23 @@ func creartablas() { //una funcion aparte encargada solo de crear tablas
 		return
 	}
 
-	fmt.Println("Base de datos conectada exitosamente")
+	fmt.Println(porcentaje, "%")
 
 	defer db.Close()
 	for i := 0; i < len(tablas); i++ {
 		go Droptable(tablas[i])
+		porcentaje += 5
+		fmt.Println(porcentaje, "%")
 	}
 	time.Sleep(2 * time.Second)
 	for i := 0; i < len(tablas); i++ {
 		go Createtable(tablas[i], atributos[i])
+		porcentaje += 5
+		fmt.Println(porcentaje, "%")
 	}
+	porcentaje += 10
+	fmt.Println(porcentaje, "%")
 	time.Sleep(2 * time.Second)
-	fmt.Println("Tablas Creadas correctamente")
 
 	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
 
