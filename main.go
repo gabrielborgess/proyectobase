@@ -66,14 +66,15 @@ func menusito() {
 			b string
 			c int
 		)
-		fmt.Print("Ingrse nombre del juego:")
+		fmt.Printf("Ingrese nombre del juego:")
 		fmt.Scanf("%s", &a)
-		fmt.Print("Ingrse generodel juego:")
+		fmt.Printf("Ingrese genero del juego:")
 		fmt.Scanf("%s", &b)
-		fmt.Print("Ingrese precio del juego:")
+		fmt.Printf("Ingrese precio del juego:")
 		fmt.Scanf("%d", &c)
 		juegox := Añadirjuego(a, b, c)
 		fmt.Println(juegox)
+		fmt.Println(juegox.Nombre)
 
 	case "2":
 		fmt.Println("elegista la Opcion 2")
