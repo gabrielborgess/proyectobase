@@ -1,4 +1,4 @@
-package slices
+package base
 
 func RemoveSlice(a []string, i int) []string { // Util para borrar un indice exacto en un slice
 	a = append(a[:i], a[i+1:]...)
