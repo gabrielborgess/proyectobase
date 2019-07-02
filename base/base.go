@@ -6,6 +6,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"gopkg.in/cheggaaa/pb.v1"
 	_ "gopkg.in/cheggaaa/pb.v1"
+	"strings"
 	"time"
 )
 
@@ -15,8 +16,23 @@ func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	bar.ShowCounters = false
 	bar.ShowElapsedTime = true
 	bar.ShowFinalTime = false
-	go creartablas(bar) // COÑO DE LA MADRE, JODEME QUE ASI DE FACIL ES CREAR UN THREAD ACA !?
+	go creartablas(bar)
 	time.Sleep(4 * time.Second)
+}
+
+func RemoveSlice(a []string, i int) []string { // Util para borrar un indice exacto en un slice
+	a = append(a[:i], a[i+1:]...)
+	return a
+}
+
+// Util para agregar elementos extras a un slice con un separador
+// Tambien sirve por ejemplo cuando tienes un slice, no quieres hacer otro con strings.split y solo quieres agregar cosas
+func AppendSliceBySplit(slice []string, element string, separator string) []string {
+	element_slice := strings.Split(element, separator)
+	for i := 0; i < len(element_slice); i++ {
+		slice = append(slice, element_slice[i])
+	}
+	return slice
 }
 
 func Droptable(nombre string) {
