@@ -19,17 +19,15 @@ func main() {
 	}
 }
 
-func Añadirjuego() string {
-	var (
-		nombre = "Aca va el nombre de juego"
-		genero = "Aca va el genero del juego"
-		//No se que mas poner xd
-	)
-	fmt.Print("Ingrse nombre del juego:")
-	fmt.Scanf("%s", &nombre)
-	fmt.Printf("Ingrse genero del juego:")
-	fmt.Scanf("%s", &genero)
-	return fmt.Sprint(nombre, genero)
+type Juego struct {
+	Nombre string
+	Genero string
+	Precio int
+}
+
+func Añadirjuego(nombre, genero string, precio int) Juego {
+	juego := Juego{Nombre: nombre, Genero: genero, Precio: precio}
+	return juego
 }
 
 func Consulta() string { //Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
@@ -63,9 +61,19 @@ func menusito() {
 	fmt.Scanf("%s", &opcion)
 	switch opcion {
 	case "1":
-		ajuego := Añadirjuego()
-		fmt.Printf("Añade un juego prro:", ajuego) //Esta linea la puse para probar la funcion despues se elimina
-		fmt.Println(ajuego)
+		var (
+			a string
+			b string
+			c int
+		)
+		fmt.Print("Ingrse nombre del juego:")
+		fmt.Scanf("%s", &a)
+		fmt.Print("Ingrse generodel juego:")
+		fmt.Scanf("%s", &b)
+		fmt.Print("Ingrese precio del juego:")
+		fmt.Scanf("%d", &c)
+		juegox := Añadirjuego(a, b, c)
+		fmt.Println(juegox)
 
 	case "2":
 		fmt.Println("elegista la Opcion 2")
