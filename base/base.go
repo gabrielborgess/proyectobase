@@ -6,7 +6,6 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"gopkg.in/cheggaaa/pb.v1"
 	_ "gopkg.in/cheggaaa/pb.v1"
-	"strings"
 	"time"
 )
 
@@ -18,21 +17,7 @@ func Base() { //function principal donde llamamos la funcion de crear tablas etc
 	bar.ShowFinalTime = false
 	go creartablas(bar)
 	time.Sleep(4 * time.Second)
-}
 
-func RemoveSlice(a []string, i int) []string { // Util para borrar un indice exacto en un slice
-	a = append(a[:i], a[i+1:]...)
-	return a
-}
-
-// Util para agregar elementos extras a un slice con un separador
-// Tambien sirve por ejemplo cuando tienes un slice, no quieres hacer otro con strings.split y solo quieres agregar cosas
-func AppendSliceBySplit(slice []string, element string, separator string) []string {
-	element_slice := strings.Split(element, separator)
-	for i := 0; i < len(element_slice); i++ {
-		slice = append(slice, element_slice[i])
-	}
-	return slice
 }
 
 func Droptable(nombre string) {
@@ -56,13 +41,13 @@ func execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 }
 
 func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
-	tablas := [25]string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
+	tablas := []string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
 		"empleados_rut", "empleados_area", "empleados_direccion", "empleados_cargo", "area", "pedidos_direccion",
 		"pedidos_empleado", "pedidos_cliente", "pedidos_detalle", "detalle_pedidos",
 		"productos_nombre", "productos_valor", "productos_proveedor",
 		"productos_genero", "productos_plataforma", "productos_estrellas",
 		"plataforma", "proveedores", "genero", "metodo_pago"}
-	atributos := [25]string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
+	atributos := []string{"id integer, nombre varchar(150)", "id integer, rut integer, dv integer",
 		"id integer, direccion varchar(255), region varchar(150), telefono varchar(12)", "id integer, nombre varchar(255)",
 		"id integer, sueldo integer", "id integer, rut integer, dv integer", "id integer, area_id integer",
 		"id integer, direccion varchar(255), region varchar(150)", "id integer, cargo varchar(255)", "id integer, tipo varchar(255)",

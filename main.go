@@ -13,7 +13,6 @@ import (
 // No sé que clase de atrocidad hiciste men xdd
 func main() {
 	base.Base()
-
 	for {
 		menusito()
 	}
