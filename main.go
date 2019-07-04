@@ -18,16 +18,7 @@ func main() {
 	}
 }
 
-type Juego struct {
-	Nombre string
-	Genero string
-	Precio int
-}
 
-func Añadirjuego(nombre, genero string, precio int) Juego {
-	juego := Juego{Nombre: nombre, Genero: genero, Precio: precio}
-	return juego
-}
 
 func Consulta() string { //Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
 	var atributo string
@@ -61,18 +52,12 @@ func menusito() {
 	case "1":
 		var (
 			a string
-			b string
-			c int
 		)
+
 		fmt.Printf("Ingrese nombre del juego:")
 		fmt.Scanf("%s", &a)
-		fmt.Printf("Ingrese genero del juego:")
-		fmt.Scanf("%s", &b)
-		fmt.Printf("Ingrese precio del juego:")
-		fmt.Scanf("%d", &c)
-		juegox := Añadirjuego(a, b, c)
-		fmt.Println(juegox)
-		fmt.Println(juegox.Nombre)
+		base.Insertar(a)
+
 
 	case "2":
 		fmt.Println("elegista la Opcion 2")

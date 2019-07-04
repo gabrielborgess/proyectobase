@@ -20,13 +20,13 @@ func Base() { //function principal donde llamamos la funcion de crear tablas etc
 }
 
 func Droptable(nombre string) {
-	execdb("DROP TABLE IF EXISTS `" + nombre + "`")
+	Execdb("DROP TABLE IF EXISTS `" + nombre + "`")
 }
 func Createtable(nombre string, atributos string) {
-	execdb("CREATE TABLE " + nombre + " (" + atributos + ")")
+	Execdb("CREATE TABLE " + nombre + " (" + atributos + ")")
 }
 
-func execdb(query string) { // Usa la funcion que cree yo para hacer las query, saldrá mejor y mas facil
+func Execdb(query string) { // Usa la funcion que cree yo para hacer las query, saldrá mejor y mas facil
 	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
 	defer db.Close()
 	if err != nil {
@@ -74,4 +74,43 @@ func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de cre
 
 	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
 
+}
+func obtenerBaseDeDatos() (db *sql.DB, e error) {
+	usuario := "admin_admin"
+	pass := "ganzo10."
+	host := "tcp(158.69.60.190:3306)"
+	nombreBaseDeDatos := "admin_proyecto"
+	// Debe tener la forma usuario:contraseña@protocolo(host:puerto)/nombreBaseDeDatos
+	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s", usuario, pass, host, nombreBaseDeDatos))
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
+}
+
+type Juego struct {
+	Nombre string
+	Genero string
+	Precio int
+}
+
+func Insertar(Nombre string) (e error) {
+	db, err := obtenerBaseDeDatos()
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+
+	// Preparamos para prevenir inyecciones SQL
+	sentenciaPreparada, err := db.Prepare("INSERT INTO productos_nombre (Nombre) VALUES(?)")
+	if err != nil {
+		return err
+	}
+	defer sentenciaPreparada.Close()
+	// Ejecutar sentencia, un valor por cada '?'
+	_, err = sentenciaPreparada.Exec(Nombre)
+	if err != nil {
+		return err
+	}
+	return nil
 }
