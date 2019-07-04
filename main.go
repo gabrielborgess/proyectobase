@@ -13,7 +13,6 @@ import (
 // No sé que clase de atrocidad hiciste men xdd
 func main() {
 	base.Base()
-
 	for {
 		menusito()
 	}
@@ -55,9 +54,8 @@ func helpmenu() {
 
 //en menucito corremos lo principal
 func menusito() {
-
 	opcion := "<Selecciona una opcion:>"
-	helpmenu()
+	go helpmenu()
 	fmt.Scanf("%s", &opcion)
 	switch opcion {
 	case "1":
