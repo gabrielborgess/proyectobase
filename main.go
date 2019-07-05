@@ -20,7 +20,7 @@ func main() {
 		base.Base()
 	}
 	for {
-		menusito()
+		mainMenu()
 	}
 }
 
@@ -43,12 +43,13 @@ func helpmenu() {
 	fmt.Println("4.Añadir venta")
 	fmt.Println("5.Buscar venta")
 	fmt.Println("6.Editar venta")
+	fmt.Println("8.Estructura de la Base")
 	fmt.Println("7.Salir\n")
 	fmt.Printf(":")
 }
 
-//en menucito corremos lo principal
-func menusito() {
+//en Main Menu corremos lo principal, Privada, Se define con minuscula primera letra
+func mainMenu() {
 	db, _ := base.ObtenerBaseDeDatos()
 	defer db.Close()
 	opcion := "<Selecciona una opcion:>"
@@ -80,7 +81,8 @@ func menusito() {
 		fmt.Println("Gracias por usar the master program xd")
 		fmt.Println("chao prro")
 		os.Exit(2)
-
+	case "8":
+		base.Show_Struct()
 	default:
 		fmt.Println("Opcion Invalida")
 	}

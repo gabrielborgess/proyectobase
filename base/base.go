@@ -41,7 +41,7 @@ func Execdb(query string) { // Usa la funcion que cree yo para hacer las query, 
 	}
 }
 
-func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
+func Atributos() ([]string, []string) {
 	tablas := []string{"clientes_nombre", "clientes_rut", "clientes_direccion", "empleados_nombre", "empleados_sueldo",
 		"empleados_rut", "empleados_area", "empleados_direccion", "empleados_cargo", "area", "pedidos_direccion",
 		"pedidos_empleado", "pedidos_cliente", "pedidos_detalle", "detalle_pedidos",
@@ -57,6 +57,18 @@ func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de cre
 		"id integer, valor integer", "id integer, proveedor_id integer", "id integer, genero_id integer",
 		"id integer, plataforma_id integer", "id integer, estrellas integer", "id integer, plataforma varchar(25)",
 		"id integer, nombre varchar(255), direccion varchar(255), telefono varchar(12)", "id integer, genero varchar(32)", "id integer, nombre varchar(32)"}
+	return tablas, atributos
+}
+
+func Show_Struct() {
+	tablas, atributos := Atributos()
+	for i := range tablas {
+		fmt.Printf("\nTabla\t\tAtributos\n%s\t\t%s\n", tablas[i], atributos[i])
+	}
+}
+
+func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de crear tablas
+	tablas, atributos := Atributos()
 	go func() {
 		for i := range tablas {
 			go Droptable(tablas[i])
@@ -122,4 +134,22 @@ func Insertar_sql(tabla string, columnas string, valores string, db *sql.DB, cer
 	fmt.Println(fmt.Sprintf("Sql ejecutada:\nINSERT INTO `%s` (%s) VALUES(%s);", tabla, columnas, preparado))
 	Execdb(fmt.Sprintf("INSERT INTO `%s` (%s) VALUES(%s);", tabla, columnas, preparado))
 	return
+}
+func eliminar_sql(tabla string, id string) error {
+	db, err := ObtenerBaseDeDatos()
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+	sentenciaPreparada, err := db.Prepare(fmt.Sprint("DELETE FROM `%s` WHERE id=%s", tabla, id))
+	if err != nil {
+		return err
+	}
+	defer sentenciaPreparada.Close()
+
+	_, err = sentenciaPreparada.Exec(id)
+	if err != nil {
+		return err
+	}
+	return nil
 }
