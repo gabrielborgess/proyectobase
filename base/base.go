@@ -6,6 +6,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"gopkg.in/cheggaaa/pb.v1"
 	_ "gopkg.in/cheggaaa/pb.v1"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -27,12 +29,12 @@ func Createtable(nombre string, atributos string) {
 }
 
 func Execdb(query string) { // Usa la funcion que cree yo para hacer las query, saldrá mejor y mas facil
-	db, err := sql.Open("mysql", "admin_admin:ganzo10.@tcp(158.69.60.190:3306)/admin_proyecto")
-	defer db.Close()
+	db, err := ObtenerBaseDeDatos()
 	if err != nil {
 		fmt.Printf("error al conectar")
 		return
 	}
+	defer db.Close()
 	_, err = db.Exec(query)
 	if err != nil {
 		panic(err)
@@ -72,10 +74,8 @@ func creartablas(a *pb.ProgressBar) { //una funcion aparte encargada solo de cre
 	a.FinishPrint("Programa Cargado\n")
 	time.Sleep(100 * time.Millisecond)
 
-	//execdb("INSERT INTO proveedores VALUES ('0XD')") query mala
-
 }
-func obtenerBaseDeDatos() (db *sql.DB, e error) {
+func ObtenerBaseDeDatos() (db *sql.DB, e error) {
 	usuario := "admin_admin"
 	pass := "ganzo10."
 	host := "tcp(158.69.60.190:3306)"
@@ -94,23 +94,32 @@ type Juego struct {
 	Precio int
 }
 
-func Insertar(Nombre string) (e error) {
-	db, err := obtenerBaseDeDatos()
-	if err != nil {
-		return err
+// Los valores se separan por coma, la tabla se declara, se utiliza una db ya creada para evitar las sobreconexiones a base y se confirma el cierre o no al final de ejecución
+func Insertar_sql(tabla string, columnas string, valores string, db *sql.DB, cerrar bool) {
+	//
+	if cerrar {
+		defer db.Close()
 	}
-	defer db.Close()
+	preparado := ""
+	iterar := strings.Split(valores, ",")
+	for i := range iterar {
+		_, err := strconv.Atoi(iterar[i])
+		if err != nil {
+			if i+1 == len(iterar) {
+				preparado += "\"" + iterar[i] + "\""
+			} else {
+				preparado += "\"" + iterar[i] + "\","
+			}
+		} else {
+			if i+1 == len(iterar) {
+				preparado += iterar[i]
+			} else {
+				preparado += iterar[i] + ","
+			}
+		}
 
-	// Preparamos para prevenir inyecciones SQL
-	sentenciaPreparada, err := db.Prepare("INSERT INTO productos_nombre (Nombre) VALUES(?)")
-	if err != nil {
-		return err
 	}
-	defer sentenciaPreparada.Close()
-	// Ejecutar sentencia, un valor por cada '?'
-	_, err = sentenciaPreparada.Exec(Nombre)
-	if err != nil {
-		return err
-	}
-	return nil
+	fmt.Println(fmt.Sprintf("Sql ejecutada:\nINSERT INTO `%s` (%s) VALUES(%s);", tabla, columnas, preparado))
+	Execdb(fmt.Sprintf("INSERT INTO `%s` (%s) VALUES(%s);", tabla, columnas, preparado))
+	return
 }

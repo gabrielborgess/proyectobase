@@ -5,6 +5,7 @@ import (
 	"./base"
 	"fmt"
 	"os"
+	"time"
 )
 
 //Saludos a github xd
@@ -12,13 +13,16 @@ import (
 //funcion para iniciar programa
 // No sé que clase de atrocidad hiciste men xdd
 func main() {
-	base.Base()
+	var setup string
+	fmt.Println("Bienvenido, Desea Instalar la base de datos? S/n")
+	fmt.Scanf("%s", &setup)
+	if setup == "s" {
+		base.Base()
+	}
 	for {
 		menusito()
 	}
 }
-
-
 
 func Consulta() string { //Funcion que sirve para ingresar en una variable lo que el usuario quiere buscar asi lo pasamos a una consulta sql
 	var atributo string
@@ -45,19 +49,20 @@ func helpmenu() {
 
 //en menucito corremos lo principal
 func menusito() {
+	db, _ := base.ObtenerBaseDeDatos()
+	defer db.Close()
 	opcion := "<Selecciona una opcion:>"
 	go helpmenu()
 	fmt.Scanf("%s", &opcion)
 	switch opcion {
 	case "1":
 		var (
-			a string
+			nombre string
 		)
 
 		fmt.Printf("Ingrese nombre del juego:")
-		fmt.Scanf("%s", &a)
-		base.Insertar(a)
-
+		fmt.Scanf("%s", &nombre)
+		go base.Insertar_sql("productos_nombre", "id,nombre", "1,"+nombre, db, false)
 
 	case "2":
 		fmt.Println("elegista la Opcion 2")
@@ -79,4 +84,5 @@ func menusito() {
 	default:
 		fmt.Println("Opcion Invalida")
 	}
+	time.Sleep(1 * time.Second)
 }
